@@ -15,7 +15,6 @@
 ### Association
 - has_many :items
 - has_many :purchases
-- has_one :send
 
 
 
@@ -28,7 +27,7 @@
 | category_id      | integer    | null: false                    |
 | item_state_id    | integer    | null: false                    |
 | delivery_fee_id  | integer    | null: false                    |
-| shipment_area_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | spend_day_id     | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
@@ -38,15 +37,15 @@
 
 
 
-## sends テーブル
+## shippings テーブル
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_number   | strign     | null: false                    |
-| prefecture_id | string     | null: false                    |
-| city          | strign     | null: false                    |
+| post_number   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |
-| phone         | integer    | null: false                    |
+| phone         | string     | null: false                    |
 | purchase      | references | null: false, foreign_key: true |
 
 ### Association
@@ -63,4 +62,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :send
+- has_one :shipping
