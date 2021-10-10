@@ -1,28 +1,3 @@
-class Category < ActiveHash::Base
-  self.data = [
-    {id: 0,  name: '---'},                   {id: 1,  name: 'メンズ'},
-    {id: 2,  name: 'レディース'},              {id: 3,  name: 'ベビー・キッズ'},
-    {id: 4,  name: 'インテリア・住まい・小物'},  {id: 5,  name: '本・音楽・ゲーム'},
-    {id: 6,  name: 'おもちちゃ・ホビー・グッズ'}, {id: 7,  name: '家電・スマホ・カメラ'},
-    {id: 8,  name: 'スポーツ・レジャー'},       {id: 9,  name: 'ハンドメイド'},
-    {id: 10, name: 'その他'}
-  ]
-end
-
-class ItemState < ActiveHash::Base
-  self.data = [
-    {id: 0,  name: '---'},            {id: 1,  name: '新品・未使用'},
-    {id: 2,  name: '未使用に近い'},     {id: 3,  name: '目立った傷や汚れなし'},
-    {id: 4,  name: 'やや傷や汚れあり'},  {id: 5,  name: '傷や汚れあり'},
-    {id: 6,  name: '全体的に状態が悪い'}
-  ]
-end
-
-class DeliveryFee < ActiveHash::Base
-  self.data = [
-    {id: 0,  name: '---'},  {id: 1,  name: '着払い(購入者負担)'},  {id: 2,  name: '送料込み(出品者負担)'},
-  ]
-end
 
 class Prefecture < ActiveHash::Base
   self.data = [
@@ -38,12 +13,5 @@ class Prefecture < ActiveHash::Base
     {id: 36, name: '徳島県'}, {id: 37, name: '香川県'}, {id: 38, name: '愛媛県'},   {id: 39, name: '高知県'},
     {id: 40, name: '福岡県'}, {id: 41, name: '佐賀県'}, {id: 42, name: '長崎県'},   {id: 43, name: '熊本県'},
     {id: 44, name: '大分県'}, {id: 45, name: '宮崎県'}, {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
-  ]
-end
-
-class SpendDay < ActiveHash::Base
-  self.data = [
-    {id: 0,  name: '---'},        {id: 1,  name: '1〜2日で発送'},
-    {id: 2,  name: '2〜3日で発送'}, {id: 3,  name: '4〜7日で発送'}
   ]
 end

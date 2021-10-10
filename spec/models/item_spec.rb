@@ -40,6 +40,18 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
 
+    it 'priceが299円以下では登録できない' do
+      @item.price = '299'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is out of setting range")
+    end
+
+    it 'priceが10,000,000円以上では登録できない' do
+      @item.price = '10000000'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is out of setting range")
+    end
+
     it 'priceに全角数字が含まれていると登録できない' do
       @item.price = '３00'
       @item.valid?
@@ -98,6 +110,12 @@ RSpec.describe Item, type: :model do
       @item.spend_day_id = '0'
       @item.valid?
       expect(@item.errors.full_messages).to include("Spend day can't be blank")
+    end
+
+    it 'userが紐づいていなければ登録できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('User must exist')
     end
 
   end
