@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    image           {Faker::Lorem.sentence}
     item_name       {Faker::Name.initials(number: 2)}
     item_detail     {'test'}
     price           {Faker::Number.between(from: 300, to: 9999999)}
