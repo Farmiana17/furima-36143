@@ -25,7 +25,7 @@
   <%# 『ログイン状態の場合でも、売却済みの商品には「商品の編集」「削除」「購入画面に進む」ボタンが表示されない」が未実装のため、%>
   <%# 「商品購入機能」実装後に改めて実装を行う %>
     <% if user_signed_in? && current_user.id == @item.user.id %>
-      <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
 
