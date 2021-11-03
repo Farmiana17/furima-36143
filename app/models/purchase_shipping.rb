@@ -8,7 +8,7 @@ class PurchaseShipping
     validates :post_number, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Enter it as follows(e.g. 123-4567)" }
     validates :city
     validates :prefecture_id, numericality: { other_than: 0 , message: "can't be blank" }
-    validates :addresss
+    validates :address
     validates :phone, format: { with: /\A\d{10,11}\z/, message: "is too short" }
   end
 

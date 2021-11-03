@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
       @purchase_shipping.save
       redirect_to root_path
     else
-      binding.pry
       render :index
     end
   end
