@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    #@order = Order.new
     @purchase_shipping = PurchaseShipping.new
   end
 
@@ -11,11 +10,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #@order = Order.new(order_params)
     @purchase_shipping = PurchaseShipping.new(purchase_params)
     if @purchase_shipping.valid?
-      #@purchase_shipping.save
-      #@order.save
+      @purchase_shipping.save
       redirect_to root_path
     else
       render :index
@@ -23,11 +20,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  #def order_params
-    #@order = Order.new
-    #params.require(:order).permit(:id, :price)
-  #end
 
   def purchase_params
     params.require(:purchase_shipping)
