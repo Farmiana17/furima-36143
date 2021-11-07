@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :move_to_index, only: [:index, :create]
+  before_action :move_to, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
@@ -29,15 +29,16 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(amount: @item.price, card: purchase_params[:token], currency: 'jpy')
   end
 
-  def move_to_index
+  def move_to
     @item = Item.find(params[:item_id])
-    if user_signed_in? == false || @item.user.id == current_user.id
+    if user_signed_in? == true && @item.user.id == current_user.id || @item.purchase.present?
       redirect_to root_path
+    elsif user_signed_in? == false
+      redirect_to new_user_session_path
     end
   end
-
 end

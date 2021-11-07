@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe PurchaseShipping, type: :model do
-  
   describe '購入情報の保存' do
     before do
       user = FactoryBot.create(:user)
@@ -63,15 +62,11 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
       end
 
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @purchase_shipping.token = nil
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Token can't be blank")
       end
-
-
     end
-
   end
-
 end

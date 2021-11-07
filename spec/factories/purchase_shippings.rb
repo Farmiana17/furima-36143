@@ -9,6 +9,6 @@ FactoryBot.define do
     user_id       { 1 }
     item_id       { 1 }
     price         { 3000 }
-    token         {"tok_abcdefghijk00000000000000000"}
+    token         { 'tok_abcdefghijk00000000000000000' }
   end
 end
