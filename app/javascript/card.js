@@ -1,35 +1,35 @@
-//const pay = () => {
-//  Payjp.setPublicKey("pk_test_74c4b45025796fcebf5adc77");
-//  const submit = document.getElementById("button");
-//  submit.addEventListener("click", (e) => {
-//    e.preventDefault();
+  const pay = () => {
+    Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+    const submit = document.getElementById("button");
+    submit.addEventListener('click', (e) => {
+      e.preventDefault();
 
-//    const formResult = document.getElementById("charge-form");
-//    const formData = new FormData(formResult);
+      const formResult = document.getElementById("charge-form");
+      const formData = new FormData(formResult);
 
-//    const card = {
-//      number: formData.get("purchase_shipping[number]"),
-//      cvc: formData.get("purchase_shipping[cvc]"),
-//      exp_month: formData.get("purchase_shipping[exp_month]"),
-//      exp_year: `20${formData.get("purchase_shipping[exp_year]")}`,
-//    };
+      const card = {
+        number: formData.get("purchase_shipping[number]"),
+        cvc: formData.get("purchase_shipping[cvc]"),
+        exp_month: formData.get("purchase_shipping[exp_month]"),
+        exp_year: `20${formData.get("purchase_shipping[exp_year]")}`,
+      };
 
-//    Payjp.createToken(card, (status, response) => {
-//      if (status == 200) {
-//        const token = response.id;
-//        const renderDom = document.getElementById("charge-form");
-//        const tokenObj = `<input value=${token} name='token' type="hidden"> `;
-//        renderDom.insertAdjacentHTML("beforeend", tokenObj);
-//      }
+      Payjp.createToken(card, (status, response) => {
+        if (status == 200) {
+          const token = response.id;
+          const renderDom = document.getElementById("charge-form");
+          const tokenObj = `<input value=${token} name='token' type="hidden"> `;
+          renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        }
 
-//      document.getElementById("purchase_shipping_number").removeAttribute("name");
-//      document.getElementById("purchase_shipping_cvc").removeAttribute("name");
-//      document.getElementById("purchase_shipping_exp_month").removeAttribute("name");
-//     document.getElementById("purchase_shipping_exp_year").removeAttribute("name");
+        document.getElementById("card-number").removeAttribute("name");
+        document.getElementById("card-cvc").removeAttribute("name");
+        document.getElementById("card-exp-month").removeAttribute("name");
+        document.getElementById("card-exp-year").removeAttribute("name");
 
-//      document.getElementById("charge-form").submit();
-//    });
-//  });
-//};
+        document.getElementById("charge-form").submit();
+      });
+    });
+  };
 
-//window.addEventListener("load", pay);
+  window.addEventListener("load", pay);

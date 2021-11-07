@@ -1,6 +1,7 @@
 class PurchaseShipping
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :post_number, :prefecture_id, :city, :address, :building, :phone
+  attr_accessor :price, :token
     
   with_options presence: true do
     validates :user_id
@@ -10,6 +11,8 @@ class PurchaseShipping
     validates :prefecture_id, numericality: { other_than: 0 , message: "can't be blank" }
     validates :address
     validates :phone, format: { with: /\A\d{10,11}\z/, message: "is too short" }
+    validates :price, numericality: { only_integer: true }
+    validates :token
   end
 
   def save
