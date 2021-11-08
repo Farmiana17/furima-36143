@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.purchase.present?
   end
 
   def update
@@ -46,20 +47,17 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item)
-          .permit(:image, :item_name, :item_detail, :price, :category_id, 
+          .permit(:image, :item_name, :item_detail, :price, :category_id,
                   :item_state_id, :delivery_fee_id, :prefecture_id, :spend_day_id)
           .merge(user_id: current_user.id)
   end
 
   def move_to_index
     item = Item.find(params[:id])
-    unless item.user.id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless item.user.id == current_user.id
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
