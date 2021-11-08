@@ -6,9 +6,6 @@ class OrdersController < ApplicationController
     @purchase_shipping = PurchaseShipping.new
   end
 
-  def new
-  end
-
   def create
     @purchase_shipping = PurchaseShipping.new(purchase_params)
     if @purchase_shipping.valid?
